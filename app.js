@@ -4,7 +4,9 @@ var brain = require('brain.js')
 
 var app = express()
 app.use('/images', express.static(__dirname + '/src/images'));
+app.use('/views', express.static(__dirname + '/src/view'));
 app.use('/res', express.static(__dirname + '/node_modules'));
+
 var net = new brain.NeuralNetwork()
 
 var port = 8080
@@ -12,6 +14,11 @@ var port = 8080
 app.get('/', function(req, res) {
 
 	res.sendFile(path.join(__dirname + '/index.html'))
+})
+
+app.get('/todo', function(req, res) {
+
+	res.sendFile(path.join(__dirname + '/src/view/todoApp.html'))
 })
 
 app.get('/:data', function (req, res) {
