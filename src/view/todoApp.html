@@ -7,19 +7,98 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     
-    <style></style>
+    <style>
+        .list {
+            border-style: solid;
+            border-width: 1px;
+            border-color: red;
+            margin-left: 5px;
+        }
+    </style>
     <script></script>
 </head>
-<body>
-    <div><h1>Hello world !</h1></div>
-    <div class="row">
+<body ng-app="myApp">
+    <div>
+        <h1>Hello world !</h1>
+    </div>
+
+    <div class="row" ng-controller="MyController">
+        
+        <div class="col-sm-4">
+            <h1>Projects</h1>
+            <div class="list" ng-repeat="n in Data track by $index">
+                <h4>{{n.title}}</h4>
+                <h5>{{n.desc}}</h5>
+                <div class="list">
+                    plop
+                </div>
+            </div>
+        </div>
+
         <div class="col-sm-4"></div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4"></div>
+
+        <div class="col-sm-4">
+            <p>
+                <label>project :</label>
+                <input type="text" id="inputProject">
+            </p>
+            <p>
+                <button ng-click="addProject()">+ Project</button>
+                <button ng-click="addProjectDesc()">+ Projects desc</button>
+            </p>
+
+            <p>
+                <label>task :</label>
+                <input type="text" id="inputTask">
+            </p>
+            <p>
+                <button ng-click="addTask()">+ Task</button>
+                <button ng-click="addTaskDesc()">+ Desc</button>
+                <button ng-click="addTaskCat()">+ Cat</button>
+                <button ng-click="addTaskDate()">+ Date</button>
+                <button ng-click="addTaskSub()">+ Sub</button>
+                <button ng-click="addTaskPend()">+ Pend</button>
+            </p>
+        </div>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"></script>
+    
+    <script>
+        var myApp = angular.module('myApp',[]);
+
+        myApp.controller('MyController', ['$scope', function($scope) {
+            $scope.Data = [];
+
+            $scope.addProject = function () {
+                $scope.Data.push({title: "Lorem", desc: "Ipsum"});
+            }
+            $scope.addProjectDesc = function () {
+                console.log($("#inputProject").val())
+            }
+            $scope.addTask = function () {
+                console.log("addTask")
+            }
+            $scope.addTaskDesc = function () {
+                console.log("addTaskDesc")
+            }
+            $scope.addTaskCat = function () {
+                console.log("addTaskCat")
+            }
+            $scope.addTaskDate = function () {
+                console.log("addTaskDate")
+            }
+            $scope.addTaskSub = function () {
+                console.log("addTaskSub")
+            }
+            $scope.addTaskPend = function () {
+                console.log("addTaskPend")
+            }
+
+        }]);
+    </script>
 </body>
 </html>
