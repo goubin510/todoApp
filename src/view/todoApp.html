@@ -26,7 +26,7 @@
         
         <div class="col-sm-4">
             <h1>Projects</h1>
-            <div class="list" ng-repeat="n in Data track by $index">
+            <div class="list" ng-repeat="n in Data track by n.id">
                 <h4>{{n.title}}</h4>
                 <h5>{{n.desc}}</h5>
                 <div class="list">
@@ -74,10 +74,10 @@
             $scope.Data = [];
 
             $scope.addProject = function () {
-                $scope.Data.push({title: "Lorem", desc: "Ipsum"});
+                $scope.Data.push({title: "Lorem", desc: "Ipsum", id: $scope.Data.length});
             }
             $scope.addProjectDesc = function () {
-                console.log($("#inputProject").val())
+                console.log($scope.Data)
             }
             $scope.addTask = function () {
                 console.log("addTask")
